@@ -14,17 +14,11 @@ section{
 .anime-area{
     position: relative;
     border: 1px solid #000;
+    min-width: 200px;
+    min-height: 200px;
 }
 
-section.anime-area{
-    width: calc(100vw - 100px);
-    height: calc(100% - 100px);
-}
 
-section div{
-    width: 200px;
-    height: 200px;
-}
 
 .contents{
     width: 880px;
@@ -34,9 +28,9 @@ section div{
 .anime{
     display: block;
     position: absolute;
+    z-index: -1;
     width: 100px;
     height: 100px;
-    z-index: 1;
 }
 
 
