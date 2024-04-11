@@ -13,8 +13,17 @@ section{
 
 .anime-area{
     position: relative;
-    overflow-x: hidden;
-    
+    border: 1px solid #000;
+}
+
+section.anime-area{
+    width: calc(100vw - 100px);
+    height: calc(100% - 100px);
+}
+
+section div{
+    width: 200px;
+    height: 200px;
 }
 
 .contents{
@@ -22,13 +31,12 @@ section{
     margin: 0 auto;
 }
 
-img{
+.anime{
     display: block;
     position: absolute;
     width: 100px;
     height: 100px;
     z-index: 1;
-    transform: translateX(-50%) ;
 }
 
 
