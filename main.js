@@ -1,72 +1,60 @@
-const anime_img = document.querySelectorAll(".anime");
 
-// 初期位置（positionで指定）
-anime_img[0].style.top = "0";
-anime_img[0].style.left = "0";
-
-anime_img[1].style.top = "10vw";
-anime_img[1].style.left = "30px";
-
-anime_img[2].style.top = "400px";
-anime_img[2].style.left = "50vh";
-
-anime_img[3].style.top = "500px";
-anime_img[3].style.left = "70vh";
-
-// green
-anime_img[4].style.top = "600px";
-anime_img[4].style.left = "20vh";
-
-anime_img[5].style.top = "650px";
-anime_img[5].style.left = "40vh";
-
-anime_img[6].style.top = "500px";
-anime_img[6].style.left = "80vh";
-
-anime_img[7].style.top = "700px";
-anime_img[7].style.left = "85vh";
-
-anime_img[8].style.top = "750px";
-anime_img[8].style.left = "90vh";
+const anime_areas = document.querySelectorAll(".anime-area")
 
 
-for(let i = 0; i < anime_img.length; i ++){
-    let anime_x = anime_img[i].getBoundingClientRect().left;
-    let anime_y = anime_img[i].getBoundingClientRect().top;
-    let bounce_rad = (i + 1) * 3 * Math.PI / 10;
-    
-    const bounce_anime = ()=>{
-    
-        if(anime_x < innerWidth){
-            anime_img[i].style.left = anime_x + "px";
-        }else{
-            anime_img[i].style.left = 2 *  innerWidth - anime_x + "px";
-        }
-        if(anime_y < innerHeight){
-            anime_img[i].style.top = anime_y + "px";
-        }else{
-            anime_img[i].style.top = 2 * innerHeight - anime_y + "px";
-        }
 
-        anime_x = anime_x + Math.cos(- bounce_rad);
-        anime_y = anime_y + Math.sin(- bounce_rad);
-    
-        if(anime_x > 2 * innerWidth ){
-            anime_x = 0;
-        }else if(anime_x < 0){
-            anime_x = 2 * innerWidth;
+for(let area_i = 0; area_i < anime_areas.length ; area_i++){
+    const anime_imgs = anime_areas[area_i].querySelectorAll( ".anime");
+
+    anime_imgs.forEach((anime_img)=>{
+        anime_img.style.top = Math.random() * anime_areas[area_i].clientHeight + "px";
+        anime_img.style.left = Math.random() * anime_areas[area_i].clientWidth + "px";
+    });
+
+
+    for(let i = 0; i < anime_imgs.length; i ++){
+        let anime_x = anime_imgs[i].getBoundingClientRect().left;
+        let anime_y = anime_imgs[i].getBoundingClientRect().top;
+        let bounce_rad = Math.random() * Math.PI * 2;
+
+        //ここでアニメーションのスピードを調節できます
+        let anime_speed = 1;
+        
+        const bounce_anime = ()=>{
+        
+            if(anime_x < anime_areas[area_i].clientWidth - anime_imgs[i].clientWidth){
+                anime_imgs[i].style.left = anime_x + "px";
+            }else{
+                anime_imgs[i].style.left = 2 *  (anime_areas[area_i].clientWidth - anime_imgs[i].clientWidth) - anime_x  + "px";
+            }
+            if(anime_y < anime_areas[area_i].clientHeight - anime_imgs[i].clientHeight){
+                anime_imgs[i].style.top = anime_y + "px";
+            }else{
+                anime_imgs[i].style.top = 2 * (anime_areas[area_i].clientHeight - anime_imgs[i].clientHeight) - anime_y + "px";
+            }
+
+            anime_x = anime_x + anime_speed * Math.cos(- bounce_rad);
+            anime_y = anime_y + anime_speed * Math.sin(- bounce_rad);
+        
+            if(anime_x > 2 * (anime_areas[area_i].clientWidth - anime_imgs[i].clientWidth )){
+                anime_x = 0;
+            }else if(anime_x < 0){
+                anime_x = 2 * (anime_areas[area_i].clientWidth - anime_imgs[i].clientWidth);
+            }
+            
+            if(anime_y > 2 * (anime_areas[area_i].clientHeight - anime_imgs[i].clientHeight )){
+                anime_y = 0;
+            }else if(anime_y < 0){
+                anime_y = 2 * (anime_areas[area_i].clientHeight - anime_imgs[i].clientHeight);
+            }
+
+            requestAnimationFrame(bounce_anime);
+        
         }
         
-        if(anime_y > 2 * innerHeight ){
-            anime_y = 0;
-        }else if(anime_y < 0){
-            anime_y = 2 * innerHeight;
-        }
-
-        requestAnimationFrame(bounce_anime);
-    
+        bounce_anime();
+        
     }
-    
-    bounce_anime();
-    
+
+        
 }
