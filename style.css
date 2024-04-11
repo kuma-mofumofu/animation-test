@@ -1,0 +1,24 @@
+body{
+    position: relative;
+    width: 100%;
+}
+
+section{
+    display: flex;
+}
+
+
+img{
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+section{
+    margin-top: 300px;
+    margin-bottom: 500px;
+}
+
