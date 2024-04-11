@@ -1,10 +1,4 @@
-html::-webkit-scrollbar{
-    display: none;
-}
-body{
 
-    width: 100%;
-}
 
 section{
     display: flex;
