@@ -10,7 +10,7 @@ for(let area_i = 0; area_i < anime_areas.length ; area_i++){
 
     for(let i = 0; i < anime_imgs.length; i ++){
 
-        anime_imgs[i].style.top = (Math.random() + i) / anime_imgs.length * anime_areas[area_i].clientHeight + "px";
+        anime_imgs[i].style.top = Math.random() * anime_areas[area_i].clientHeight + "px";
         anime_imgs[i].style.left = (Math.random() + i) / anime_imgs.length * anime_areas[area_i].clientWidth + "px";
 
 
